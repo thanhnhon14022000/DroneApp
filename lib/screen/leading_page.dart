@@ -18,10 +18,8 @@ class LeadingPage extends StatelessWidget {
             fit: BoxFit.fill,
           )),
           child: Padding(
-            padding: EdgeInsets.only(
-                top: size.height * 1 / 12,
-                left: 10,
-                right: 10),
+            padding:
+                EdgeInsets.only(top: size.height * 1 / 12, left: 10, right: 10,bottom: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -29,25 +27,27 @@ class LeadingPage extends StatelessWidget {
                   'Welcom to',
                   style: AppStyles.h1.copyWith(fontWeight: FontWeight.bold),
                 ),
-                Padding(
-                    padding: EdgeInsets.only(top: 5, left: 104),
-                    child: Text(
-                      'Real-time Robotics',
-                      style: AppStyles.h2,
-                    )),
+                Container(
+                  alignment: Alignment.topRight,
+                      child: Text(
+                        'Real-time Robotics',
+                        style: AppStyles.h2,
+                      )),
                 Container(
                   //color: Colors.red,
-                  padding: EdgeInsets.only(top: 30),
+                  padding: EdgeInsets.only(top: size.height*1/10),
                   child: Image.asset(Picture.hinhDrone),
                 ),
                 Container(
                   //color: Colors.amber,
                   margin:
-                      EdgeInsets.only(left: 80, right: 80, top: 70, bottom: 30),
+                      EdgeInsets.only(left: 80, right: 80, top: 10, bottom: 30),
                   child: Image.asset(Picture.logoRealTeam),
                 ),
+                Spacer(),
                 Text('Orbital flight control application for drone ',
                     style: AppStyles.h3),
+                              
                 Container(
                   alignment: Alignment.bottomCenter,
                   padding: EdgeInsets.only(top: 20),
@@ -56,20 +56,28 @@ class LeadingPage extends StatelessWidget {
                       height: 65.0,
                       // ignore: deprecated_member_use
                       child: FlatButton(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
                         color: Colors.white,
                         child: Text(
                           'Get Started',
                           style: AppStyles.h3.copyWith(color: Colors.black),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          // ignore: avoid_print
+                          print("$size");
+                        },
                       )),
                 ),
+              Spacer(),
+              Container(
+                alignment: Alignment. bottomCenter,
+                child: Text('Version 1.01'),
+              )
+              
               ],
             ),
           )),
     );
   }
 }
-
-class SizeBox {}
