@@ -1,7 +1,8 @@
+// ignore_for_file: avoid_print
+
+//import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-
-//import '/home/thanhnhon/Documents/Project/Tuan_3/drone/drone/lib/main.dart' as app;
 import 'package:drone/main.dart' as app;
 
 void main() {
@@ -13,20 +14,108 @@ void main() {
       app.main();
       await tester.pumpAndSettle();
 
-      // Verify the counter starts at 0.
+      expect(find.text('You have pushed the button this many times:'), findsOneWidget);
       expect(find.text('0'), findsOneWidget);
 
-      // Finds the floating action button to tap on.
-      final Finder fab = find.byTooltip('Increment');
+      final Finder fab = find.byTooltip('Increment1');
 
-      // Emulate a tap on the floating action button.
       await tester.tap(fab);
 
-      // Trigger a frame.
-      await tester.pumpAndSettle();
+      await tester.pump();
 
-      // Verify the counter increments by 1.
       expect(find.text('1'), findsOneWidget);
+
+      
     });
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// void main() {
+//   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+//   group('end-to-end test', () {
+//      IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+//     testWidgets('tap on the floating action button, verify counter',
+//         (WidgetTester tester) async {
+//       app.main();
+//       await tester.pumpAndSettle();
+
+//       // Verify the counter starts at 0.
+//       expect(find.text('0'), findsOneWidget);void main() {
+//   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+//   group('end-to-end test', () {
+//      IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+//     testWidgets('tap on the floating action button, verify counter',
+//         (WidgetTester tester) async {
+//       app.main();
+//       await tester.pumpAndSettle();
+
+//       // Verify the counter starts at 0.
+//       expect(find.text('0'), findsOneWidget);
+
+//       // Finds the floating action button to tap on.
+//       final Finder fab = find.byKey(Key('increment1'));
+
+//       // Emulate a tap on the floating action button.
+//       for (var i = 0; i < 100; i++) {
+//         await tester.tap(fab);
+      
+
+      
+//     }
+//     // Trigger a frame.
+//       await tester.pumpAndSettle();
+
+//       // Verify the counter increments by 1.
+//       expect(find.text('100'), findsOneWidget);
+//     );
+    
+//   });
+
+
+
+  
+
+// }
+
+//       final Finder fab = find.byKey(Key('increment1'));
+
+//       // Emulate a tap on the floating action button.
+//       for (var i = 0; i < 100; i++) {
+//         await tester.tap(fab);
+      
+
+      
+//     }
+//     // Trigger a frame.
+//       await tester.pumpAndSettle();
+
+//       // Verify the counter increments by 1.
+//       expect(find.text('100'), findsOneWidget);
+//     );
+    
+//   });
+
+
+
+  
+
+// }

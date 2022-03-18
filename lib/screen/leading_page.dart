@@ -2,6 +2,7 @@ import 'package:drone/value/app_picture.dart';
 import 'package:flutter/material.dart';
 
 import '../value/app_fonts.dart';
+import 'home_page.dart';
 
 class LeadingPage extends StatelessWidget {
   const LeadingPage({Key? key}) : super(key: key);
@@ -18,8 +19,8 @@ class LeadingPage extends StatelessWidget {
             fit: BoxFit.fill,
           )),
           child: Padding(
-            padding:
-                EdgeInsets.only(top: size.height * 1 / 12, left: 10, right: 10,bottom: 10),
+            padding: EdgeInsets.only(
+                top: size.height * 1 / 12, left: 10, right: 10, bottom: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -28,14 +29,14 @@ class LeadingPage extends StatelessWidget {
                   style: AppStyles.h1.copyWith(fontWeight: FontWeight.bold),
                 ),
                 Container(
-                  alignment: Alignment.topRight,
-                      child: Text(
-                        'Real-time Robotics',
-                        style: AppStyles.h2,
-                      )),
+                    alignment: Alignment.topRight,
+                    child: Text(
+                      'Real-time Robotics',
+                      style: AppStyles.h2,
+                    )),
                 Container(
                   //color: Colors.red,
-                  padding: EdgeInsets.only(top: size.height*1/10),
+                  padding: EdgeInsets.only(top: size.height * 1 / 10),
                   child: Image.asset(Picture.hinhDrone),
                 ),
                 Container(
@@ -47,7 +48,6 @@ class LeadingPage extends StatelessWidget {
                 Spacer(),
                 Text('Orbital flight control application for drone ',
                     style: AppStyles.h3),
-                              
                 Container(
                   alignment: Alignment.bottomCenter,
                   padding: EdgeInsets.only(top: 20),
@@ -64,17 +64,21 @@ class LeadingPage extends StatelessWidget {
                           style: AppStyles.h3.copyWith(color: Colors.black),
                         ),
                         onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (_) => HomePage()),
+                            (route) => false);
+                      
                           // ignore: avoid_print
                           print("$size");
                         },
                       )),
                 ),
-              Spacer(),
-              Container(
-                alignment: Alignment. bottomCenter,
-                child: Text('Version 1.01'),
-              )
-              
+                Spacer(),
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  child: Text('Version 1.01'),
+                )
               ],
             ),
           )),
