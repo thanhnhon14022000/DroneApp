@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'screen/leading_page.dart';
+import 'themes.dart';
 
 void main() {
   runApp(const MyApp());

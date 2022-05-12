@@ -22,6 +22,7 @@ class LeadingPage extends StatelessWidget {
             padding: EdgeInsets.only(
                 top: size.height * 1 / 12, left: 10, right: 10, bottom: 10),
             child: Column(
+              
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
