@@ -1,6 +1,6 @@
 class Icons {
   static const icons =
-      '/home/thanhnhon/Documents/Project/Tuan_3/drone/drone/assets/icons';
+      'assets/icons';
   static const iconDrone = icons +
-      '/home/thanhnhon/Documents/Project/Tuan_3/drone/drone/assets/icons/drone.png';
+      'assets/icons/drone.png';
 }

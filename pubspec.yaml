@@ -55,8 +55,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
+  # The following line ensures t/home/thanhnhon/Documents/Project/Tuan_3/drone/drone/assets/fonts/PlayfairDisplay-Regular.ttfon, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
 
@@ -81,9 +80,9 @@ flutter:
   fonts:
     - family: Playfair Display
       fonts:
-        - asset: /home/thanhnhon/Documents/Project/Tuan_3/drone/drone/assets/fonts/PlayfairDisplay-Bold.ttf
+        - asset: assets/fonts/PlayfairDisplay-Bold.ttf
           weight: 700
-        - asset: /home/thanhnhon/Documents/Project/Tuan_3/drone/drone/assets/fonts/PlayfairDisplay-Regular.ttf
+        - asset: assets/fonts/PlayfairDisplay-Regular.ttf
           weight: 400
           # style: Bold
   #   - family: Trajan Pro

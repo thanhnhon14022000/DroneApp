@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 mixin FontFamily {
   static const playfair = 'Playfair Display';
 }
