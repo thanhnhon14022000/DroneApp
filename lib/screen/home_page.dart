@@ -10,7 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
 
 
@@ -23,20 +22,28 @@ class _HomePageState extends State<HomePage> {
         //color: Colors.black, //thay doi mau sat o day
         child: Padding(
           padding:
-              EdgeInsets.only(top: size.height * 1 / 12, left: 10, right: 10),
+              EdgeInsets.only(top: size.height * 1 / 12),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
+                //color: Colors.red,
                 alignment: Alignment.center,
-                child: Text(
-                  'Caculator Flutter',
-                  style: AppStyles.h2.copyWith(fontWeight: FontWeight.bold),
+                child:
+                    Text(
+                      'Caculator Flutter',
+                      style: AppStyles.h2.copyWith(fontSize: 40,fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
+                //color: Colors.amber,
                 alignment: Alignment.center,
-                child: EasyDynamicThemeBtn(),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  Text('Light/Dark:', style: AppStyles.h3),
+                  EasyDynamicThemeSwitch(),
+                ],),
+                  
               ),
             ],
           ),
@@ -45,3 +52,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+//EasyDynamicThemeBtn(),

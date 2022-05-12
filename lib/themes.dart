@@ -7,7 +7,7 @@ var lightThemeData = new ThemeData(
     accentColor: Colors.blue);
 
 var darkThemeData = ThemeData(
-    primaryColor: Colors.blue,
+    primaryColor: Colors.green,
     textTheme: new TextTheme(button: TextStyle(color: Colors.black54)),
     brightness: Brightness.dark,
-    accentColor: Colors.blue);
+    accentColor: Colors.green);
