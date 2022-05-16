@@ -34,7 +34,7 @@ class CalculationBloc extends Bloc<CalculationEvent, CalculationState> {
     OperatorPressed event,
   ) async {
     List<String> allowedOperators = ['+', '-', '*', '/'];
-
+    
     if (!allowedOperators.contains(event.operator)) {
       return state;
     }
