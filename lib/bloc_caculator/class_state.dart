@@ -12,7 +12,21 @@ class CalculationModel extends Equatable {
   final String? operator;
   final int? secondOperand;
   final int? result;
+
   
+   CalculationModel copyWith({
+    int? firstOperand,
+    String? operator,
+    int? secondOperand,
+    int? result,
+  }) {
+    return CalculationModel(
+      firstOperand: firstOperand ?? this.firstOperand,
+      operator: operator ?? this.operator,
+      secondOperand: secondOperand ?? this.secondOperand,
+      result: result ?? this.result,
+    );
+  }
   @override
   String toString() {
     return "$firstOperand$operator$secondOperand=$result";

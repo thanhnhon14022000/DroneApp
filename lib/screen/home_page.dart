@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                               backgroundColor: Colors.red,
                               child: Text('x'),
                               onPressed: () {
-                                opentorPressed('x');
+                                opentorPressed('*');
                               }),
                         ],
                       ),
@@ -118,15 +118,17 @@ class _HomePageState extends State<HomePage> {
                           FloatingActionButton(
                               child: Text('1'),
                               onPressed: () {
-                                numberPressed(7);
+                                numberPressed(1);
                               }),
                           FloatingActionButton(
                               child: Text('2'),
                               onPressed: () {
-                                numberPressed(7);
+                                numberPressed(2);
                               }),
                           FloatingActionButton(
-                              child: Text('3'), onPressed: () {}),
+                              child: Text('3'), onPressed: () {
+                                numberPressed(3);
+                              }),
                           FloatingActionButton(
                               backgroundColor: Colors.red,
                               child: Text('+'),
@@ -141,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                           FloatingActionButton(
                               child: Text('0'),
                               onPressed: () {
-                                numberPressed(7);
+                                numberPressed(0);
                               }),
                           FloatingActionButton(
                               child: Text('Clear'),
@@ -151,8 +153,7 @@ class _HomePageState extends State<HomePage> {
                           FloatingActionButton(
                               child: Text('='),
                               onPressed: () {
-                                print(state.calculationModel.result);
-                                
+                                //print(state.calculationModel.result);
                                 print('ban vua nhan bang');
                                 resultPressed();
                               }),

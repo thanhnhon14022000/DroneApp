@@ -11,8 +11,8 @@ class CalculationBloc extends Bloc<CalculationEvent, CalculationState> {
   Stream<CalculationState> mapEventToState(
     CalculationEvent event,
   ) async* {
-    if (event is OperatorPressed) {
-      yield await _mapOperatorPressedToState(event);
+    if (event is NumberPressed) {
+      yield await _mapNumberPressedToState(event);
     }
 
     if (event is OperatorPressed) {
@@ -34,7 +34,7 @@ class CalculationBloc extends Bloc<CalculationEvent, CalculationState> {
     OperatorPressed event,
   ) async {
     List<String> allowedOperators = ['+', '-', '*', '/'];
-    
+
     if (!allowedOperators.contains(event.operator)) {
       return state;
     }
@@ -56,13 +56,16 @@ class CalculationBloc extends Bloc<CalculationEvent, CalculationState> {
     if (model.operator == null || model.secondOperand == null) {
       return state;
     }
+
     int result = 0;
 
     switch (model.operator) {
       case '+':
+        print('Dang la cong');
         result = model.firstOperand! + model.secondOperand!;
         break;
       case '-':
+        print('Dang la tru');
         result = model.firstOperand! - model.secondOperand!;
         break;
       case '*':
@@ -76,14 +79,103 @@ class CalculationBloc extends Bloc<CalculationEvent, CalculationState> {
         }
         break;
     }
-    // TODO: implement _mapCaculateResultToState
-    throw UnimplementedError();
+
+    final CalculationModel newModel =
+        CalculationInitial().calculationModel.copyWith(
+              firstOperand: result,
+            );
+    return CalculationChanged(
+      calculationModel: newModel,
+    );
   }
+
+  
+  // Stream<CalculationState> _mapCalculateResultToState(
+  //   CalculateResult event,
+  // ) async* {
+  //   final CalculationModel model = state.calculationModel;
+
+  //   if (model.operator == null || model.secondOperand == null) {
+  //     yield state;
+  //     return;
+  //   }
+
+  //   int result = 0;
+
+  //   switch (model.operator) {
+  //     case '+':
+  //       result = model.firstOperand! + model.secondOperand!;
+  //       break;
+  //     case '-':
+  //       result = model.firstOperand! - model.secondOperand!;
+  //       break;
+  //     case '*':
+  //       result = model.firstOperand! * model.secondOperand!;
+  //       break;
+  //     case '/':
+  //       if (model.secondOperand == 0) {
+  //         result = 0;
+  //       } else {
+  //         result = model.firstOperand! ~/ model.secondOperand!;
+  //       }
+  //       break;
+  //   }
+  //   final CalculationModel newModel =
+  //       CalculationInitial().calculationModel.copyWith(
+  //             firstOperand: result,
+  //           );
+  //   yield CalculationChanged(
+  //       calculationModel: newModel,
+  //     );
+  // }
 
   Future<CalculationState> _mapNumberPressedToState(
     NumberPressed event,
   ) async {
-    CalculationModel model = state.calculationModel;
-    throw UnimplementedError();
+    final CalculationModel model = state.calculationModel;
+
+    if (model.result != null) {
+      final CalculationModel newModel = model.copyWith(
+        firstOperand: event.number,
+      );
+
+      return CalculationChanged(
+        calculationModel: newModel,
+      );
+    }
+
+    if (model.firstOperand == null) {
+      final CalculationModel newModel =
+          model.copyWith(firstOperand: event.number);
+
+      return CalculationChanged(
+        calculationModel: newModel,
+      );
+    }
+
+    if (model.operator == null) {
+      final CalculationModel newModel = model.copyWith(
+        firstOperand: int.parse('${model.firstOperand}${event.number}'),
+      );
+
+      return CalculationChanged(
+        calculationModel: newModel,
+      );
+    }
+
+    if (model.secondOperand == null) {
+      final CalculationModel newModel =
+          model.copyWith(secondOperand: event.number);
+
+      return CalculationChanged(
+        calculationModel: newModel,
+      );
+    }
+
+    return CalculationChanged(
+      calculationModel: model.copyWith(
+        secondOperand: int.parse('${model.secondOperand}${event.number}'),
+      ),
+    );
   }
 }
