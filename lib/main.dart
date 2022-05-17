@@ -8,9 +8,25 @@ import 'themes.dart';
 import 'screen/leading_page.dart';
 
 void main() {
-  runApp(EasyDynamicThemeWidget( 
-        child: MyApp(), 
-    ), );
+  BlocOverrides.runZoned(
+    () => runApp(EasyDynamicThemeWidget( 
+        child: MyApp())),
+    blocObserver: AppBlocObserver(),
+  );
+}
+
+class AppBlocObserver extends BlocObserver {
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    super.onChange(bloc, change);
+    if (bloc is Cubit) print(change);
+  }
+
+  @override
+  void onTransition(Bloc bloc, Transition transition) {
+    super.onTransition(bloc, transition);
+    print(transition);
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +42,7 @@ class MyApp extends StatelessWidget {
       themeMode: EasyDynamicTheme.of(context).themeMode,
       home: Scaffold(
         body: BlocProvider<CalculationBloc>(create: (context)=>CalculationBloc(),
-        child: HomePage(),
+        child: LeadingPage(),
         ),
 
       ),

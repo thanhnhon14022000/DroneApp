@@ -1,12 +1,20 @@
 import 'package:drone/value/app_picture.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import '../bloc_caculator/bloc_class.dart';
+import '../bloc_caculator/class_state.dart';
 import '../value/app_fonts.dart';
 import 'home_page.dart';
 
-class LeadingPage extends StatelessWidget {
-  const LeadingPage({Key? key}) : super(key: key);
+class LeadingPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _LeadingPage();
+  }
+}
 
+class _LeadingPage extends State<LeadingPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -22,7 +30,6 @@ class LeadingPage extends StatelessWidget {
             padding: EdgeInsets.only(
                 top: size.height * 1 / 12, left: 10, right: 10, bottom: 10),
             child: Column(
-              
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -66,12 +73,14 @@ class LeadingPage extends StatelessWidget {
                         ),
                         onPressed: () {
                           Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (_) => HomePage()),
-                            (route) => false);
-                      
-                          // ignore: avoid_print
-                          print("$size");
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      BlocProvider<CalculationBloc>(
+                                        create: (context) => CalculationBloc(),
+                                        child: HomePage(),
+                                      )),
+                              (route) => false);
                         },
                       )),
                 ),
