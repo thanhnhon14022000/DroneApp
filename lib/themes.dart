@@ -1,13 +1,19 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: unnecessary_new
 
+import 'package:flutter/material.dart';
+import '/value/app_fonts.dart';
 var lightThemeData = new ThemeData(
-    primaryColor: Colors.blue,
-    textTheme: new TextTheme(button: TextStyle(color: Colors.white70)),
+    primaryColor: Colors.black,
+    //textTheme: new TextTheme(button: TextStyle(color: Colors.white70)),
+    textTheme: TextTheme(),
     brightness: Brightness.light,
-    accentColor: Colors.blue);
+    accentColor: Color.fromARGB(255, 82, 243, 243),
+    
+    );
 
 var darkThemeData = ThemeData(
-    primaryColor: Colors.green,
-    textTheme: new TextTheme(button: TextStyle(color: Colors.black54)),
+    primaryColor: Color.fromARGB(255, 87, 211, 233),
+    //textTheme: new TextTheme(button: TextStyle(color: Colors.black54)),
     brightness: Brightness.dark,
-    accentColor: Colors.green);
+    accentColor: Colors.black,
+    );

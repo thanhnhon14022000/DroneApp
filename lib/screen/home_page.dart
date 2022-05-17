@@ -26,8 +26,7 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.center,
               child: Text(
                 'Caculator Flutter',
-                style: AppStyles.h2
-                    .copyWith(fontSize: 40, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)
               ),
             ),
             Container(
@@ -35,7 +34,7 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Light/Dark:', style: AppStyles.h3),
+                  Text('Light/Dark:', style: TextStyle(fontSize: 22)),
                   EasyDynamicThemeSwitch(),
                 ],
               ),
@@ -43,126 +42,66 @@ class _HomePageState extends State<HomePage> {
             Column(
               children: [
                 Container(
+                    //padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.fromBorderSide(BorderSide(
+                        width: 5,
+                        color: Colors.black,
+                        style: BorderStyle.solid,
+                      )),
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                    
                     width: size.width,
                     height: 150,
-                    color: Colors.red,
                     child: Container(
-                      color: Colors.amber,
+                      //color: Colors.amber,
                       alignment: Alignment.bottomRight,
                       padding: EdgeInsets.only(right: 24, bottom: 24),
                       child: Text(_getDisplayText(state.calculationModel),
-                          style: TextStyle(color: Colors.black, fontSize: 30)),
+                          style: TextStyle( fontSize: 30)),
                     )),
                 Container(
                   height: size.height * 1 / 2,
                   padding: EdgeInsets.all(10),
-                  color: Colors.black,
+                  //color: Colors.black,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          FloatingActionButton(
-                              child: Text('7'),
-                              onPressed: () {
-                                numberPressed(7);
-                              }),
-                          FloatingActionButton(
-                              child: Text('8'),
-                              onPressed: () {
-                                numberPressed(8);
-                              }),
-                          FloatingActionButton(
-                              child: Text('9'),
-                              onPressed: () {
-                                numberPressed(9);
-                              }),
-                          FloatingActionButton(
-                              backgroundColor: Colors.red,
-                              child: Text('x'),
-                              onPressed: () {
-                                opentorPressed('*');
-                              }),
+                          _pressButton(text: '7', onPress: () => numberPressed(7)),
+                          _pressButton(text: '8', onPress: () => numberPressed(8)),
+                          _pressButton(text: '9', onPress: () => numberPressed(9)),
+                          _pressButton(text: 'x', onPress: () => opentorPressed('*')),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          FloatingActionButton(
-                              child: Text('4'),
-                              onPressed: () {
-                                numberPressed(4);
-                              }),
-                          FloatingActionButton(
-                              child: Text('5'),
-                              onPressed: () {
-                                numberPressed(5);
-                              }),
-                          FloatingActionButton(
-                              child: Text('6'),
-                              onPressed: () {
-                                numberPressed(6);
-                              }),
-                          FloatingActionButton(
-                              backgroundColor: Colors.red,
-                              child: Text('-'),
-                              onPressed: () {
-                                opentorPressed('-');
-                              }),
-                        ],
+                          _pressButton(text: '4', onPress: () => numberPressed(4)),
+                          _pressButton(text: '5', onPress: () => numberPressed(5)),
+                          _pressButton(text: '6', onPress: () => numberPressed(6)),
+                          _pressButton(text: '÷', onPress: () => opentorPressed('/')),
+                        ]
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          FloatingActionButton(
-                              child: Text('1'),
-                              onPressed: () {
-                                numberPressed(1);
-                              }),
-                          FloatingActionButton(
-                              child: Text('2'),
-                              onPressed: () {
-                                numberPressed(2);
-                              }),
-                          FloatingActionButton(
-                              child: Text('3'), onPressed: () {
-                                numberPressed(3);
-                              }),
-                          FloatingActionButton(
-                              backgroundColor: Colors.red,
-                              child: Text('+'),
-                              onPressed: () {
-                                opentorPressed('+');
-                              }),
-                        ],
+                          _pressButton(text: '1', onPress: () => numberPressed(1)),
+                          _pressButton(text: '2', onPress: () => numberPressed(2)),
+                          _pressButton(text: '3', onPress: () => numberPressed(3)),
+                          _pressButton(text: '+', onPress: () => opentorPressed('+')),                        
+                          ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          FloatingActionButton(
-                              child: Text('0'),
-                              onPressed: () {
-                                numberPressed(0);
-                              }),
-                          FloatingActionButton(
-                              child: Text('Clear'),
-                              onPressed: () {
-                                clearPressed();
-                              }),
-                          FloatingActionButton(
-                              child: Text('='),
-                              onPressed: () {
-                                //print(state.calculationModel.result);
-                                print('ban vua nhan bang');
-                                resultPressed();
-                              }),
-                          FloatingActionButton(
-                              backgroundColor: Colors.red,
-                              child: Text('/'),
-                              onPressed: () {
-                                opentorPressed('/');
-                              }),
+                          _pressButton(text: '0',  onPress: () => numberPressed(0)),
+                          _pressButton(text: 'Clear',  onPress: () => clearPressed()),
+                          _pressButton(text: '=',  onPress: () => resultPressed()),
+                          _pressButton(text: '-', onPress: () => opentorPressed('-')),
                         ],
                       )
                     ],
@@ -174,6 +113,20 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     });
+  }
+
+  Widget _pressButton({
+    required String text,
+    required VoidCallback onPress,
+  }){
+    return SizedBox(
+       width: 80,
+       height: 80,
+       child:FloatingActionButton(
+         onPressed: onPress,
+         child: Text(text, style: TextStyle(fontSize: 20),),
+       )
+    );
   }
 
   void numberPressed(int number) {

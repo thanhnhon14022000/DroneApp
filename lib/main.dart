@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
-
+import 'themes.dart';
 import 'screen/leading_page.dart';
 
 void main() {
@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Controler Drone',
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme:  lightThemeData,
+      darkTheme: darkThemeData,
       themeMode: EasyDynamicTheme.of(context).themeMode,
       home: Scaffold(
         body: BlocProvider<CalculationBloc>(create: (context)=>CalculationBloc(),
